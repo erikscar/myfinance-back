@@ -8,6 +8,7 @@ using myfinance.Domain.Entities;
 using myfinance.Infrastructure.Context;
 using myfinance.Infrastructure.Repositories;
 using myfinance.Infrastructure.Repositories.Interfaces;
+using myfinance.Infrastructure.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,13 +25,14 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("31312312"))
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("CHAVEJWT"))
         };
     });
 

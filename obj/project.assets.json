@@ -3225,24 +3225,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\zitteni\\.nuget\\packages\\": {}
+    "C:\\Users\\earau\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zitteni\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "projectUniqueName": "C:\\Users\\earau\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
       "projectName": "myfinance",
-      "projectPath": "C:\\Users\\zitteni\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
-      "packagesPath": "C:\\Users\\zitteni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zitteni\\Desktop\\Projetos\\myfinance\\obj\\",
+      "projectPath": "C:\\Users\\earau\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "packagesPath": "C:\\Users\\earau\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\earau\\Desktop\\Projetos\\myfinance\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\zitteni\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\earau\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
