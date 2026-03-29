@@ -6,9 +6,10 @@ namespace myfinance.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class UserController(IUserService userService) : ControllerBase
+    public class UserController(IUserService userService, ITokenService tokenService) : ControllerBase
     {
         private readonly IUserService _userService = userService;
+        private readonly ITokenService _tokenService = tokenService;
 
         [HttpGet("users")]
         public async Task<IActionResult> GetUsers()
@@ -19,7 +20,8 @@ namespace myfinance.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginDTO userData)
         {
-            var teste = userData;
+            var teste = _tokenService.GenerateJWT(1);
+
             return Ok(userData);
         }
     }
