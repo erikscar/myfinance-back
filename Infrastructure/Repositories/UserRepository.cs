@@ -15,8 +15,20 @@ public class UserRepository : IUserRepository
         _myfinanceContext = myFinanceContext;
     }
 
-    public Task<List<User>> GetUsers()
+    public async Task<List<User>> GetUsersAsync()
     {
-        return _myfinanceContext.Users.ToListAsync();
+        return await _myfinanceContext.Users.ToListAsync();
+    }
+
+    public async Task<User?> FindUserByEmail(string email)
+    {
+        return await _myfinanceContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+    }
+
+    public async Task CreateUserAsync(User user)
+    {
+        await _myfinanceContext.Users.AddAsync(user);
+
+        await _myfinanceContext.SaveChangesAsync();
     }
 }

@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using myfinance.Application.Services.Interfaces;
 using myfinance.Domain.DTOS;
@@ -18,9 +20,18 @@ namespace myfinance.API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> LoginUser([FromBody] LoginDTO userData)
+        public async Task<ActionResult> LoginUser([FromBody] LoginRequestDTO userData)
         {
-            var teste = _tokenService.GenerateJWT();
+            string token = await _userService.LoginUserAsync(userData);
+
+            return Ok(new { token });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterRequestDTO userData)
+        {
+            await _userService.RegisterUserAsync(userData);     
+                       
             return Ok();
         }
     }

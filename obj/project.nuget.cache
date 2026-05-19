@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qC2ugvagcUI=",
+  "dgSpecHash": "d4QSb4Y9KBk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\earau\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+  "projectFilePath": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\earau\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",
     "C:\\Users\\earau\\.nuget\\packages\\azure.identity\\1.14.2\\azure.identity.1.14.2.nupkg.sha512",
