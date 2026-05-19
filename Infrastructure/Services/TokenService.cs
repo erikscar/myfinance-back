@@ -6,6 +6,10 @@ using Microsoft.IdentityModel.Tokens;
 using myfinance.API.Errors;
 using myfinance.Application.Services.Interfaces;
 using myfinance.Domain.Entities;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using myfinance.Application.Services.Interfaces;
+using myfinance.Infrastructure.Config;
 
 namespace myfinance.Infrastructure.Services;
 

@@ -56,5 +56,15 @@
     "C:\\Users\\earau\\.nuget\\packages\\system.security.cryptography.pkcs\\9.0.4\\system.security.cryptography.pkcs.9.0.4.nupkg.sha512",
     "C:\\Users\\earau\\.nuget\\packages\\system.security.cryptography.protecteddata\\9.0.4\\system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "message": "Problem reading the cache file c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
+      "projectPath": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "warningLevel": 1,
+      "filePath": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

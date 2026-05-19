@@ -9,6 +9,7 @@ using myfinance.API.Errors;
 using myfinance.Application.Services;
 using myfinance.Application.Services.Interfaces;
 using myfinance.Domain.Entities;
+using myfinance.Infrastructure.Config;
 using myfinance.Infrastructure.Context;
 using myfinance.Infrastructure.Repositories;
 using myfinance.Infrastructure.Repositories.Interfaces;
@@ -26,6 +27,10 @@ builder.Services.AddDbContext<MyFinanceContext>(options =>
 });
 
 builder.Services.AddControllers();
+
+ConfigurationManager config = builder.Configuration;
+
+builder.Services.Configure<MyFinanceSettings>(config.GetSection("AppParameters"));
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
