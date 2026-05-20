@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using Azure;
 using myfinance.Application.Services.Interfaces;
 using myfinance.Domain.DTOS;
 using myfinance.Domain.Entities;
@@ -35,7 +36,7 @@ public class UserService(
         bool isPasswordCorrect = _passwordService.Verify(userData.Password, user.PasswordHash);
 
         if (!isPasswordCorrect) {
-            throw new Exception("Password is incorrect");
+            throw new Exception("Incorrect Password");
         }
 
         return await _tokenService.GenerateJWT(user.Id);

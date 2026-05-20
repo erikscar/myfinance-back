@@ -7,18 +7,22 @@ using myfinance.API.Errors;
 using myfinance.Application.Services.Interfaces;
 using myfinance.Domain.Entities;
 using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using myfinance.Application.Services.Interfaces;
 using myfinance.Infrastructure.Config;
 
 namespace myfinance.Infrastructure.Services;
 
 public class TokenService : ITokenService
 {
+    private readonly IOptions<MyFinanceSettings> _settings;
+    public TokenService(IOptions<MyFinanceSettings> settings)
+    {
+        _settings = settings;
+    }
     public async Task<string> GenerateJWT(int userId)
     {
         var handler = new JwtSecurityTokenHandler();
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("u4aQm7M3r0K7mY3rK8v4Yk2kH5q8mD0iT4oY7Qx2N9eV1uL6cP3aR5xF8bW2jH9sQ0zT6nM4cJ1pK7wL2dA=="));
+        
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.Value.JwtSecretKey));
 
         var claims = new []
         {
@@ -27,7 +31,8 @@ public class TokenService : ITokenService
 
         var token = new JwtSecurityToken(
             signingCredentials: new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512),
-            claims: claims
+            claims: claims,
+            expires: DateTime.UtcNow.AddHours(2)
         );
         
         return handler.WriteToken(token);

@@ -42,7 +42,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("u4aQm7M3r0K7mY3rK8v4Yk2kH5q8mD0iT4oY7Qx2N9eV1uL6cP3aR5xF8bW2jH9sQ0zT6nM4cJ1pK7wL2dA=="))
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["AppParameters:JwtSecretKey"])),
+            ValidateLifetime = true,
+            ValidateAudience = false,
+            ValidateIssuer = false,
+        };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                //TODO - Adicionar LOG quando falhar um Authorization
+                var teste = context.Exception.Message;
+                return Task.CompletedTask;
+            },
+
+            OnMessageReceived = context =>
+            {
+                context.Request.Cookies.TryGetValue("access_token", out var accessToken);
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    context.Token = accessToken;
+                }
+                
+                return Task.CompletedTask;
+            }
         };
     });
 
@@ -57,11 +82,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(policy =>
 {
-    policy.AllowAnyOrigin()
+    policy.WithOrigins("http://localhost:4200")
           .AllowAnyHeader()
-          .AllowAnyMethod();
-    ;
+          .AllowAnyMethod()
+          .AllowCredentials();
 });
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.UseExceptionHandler(exceptionHandler =>
 {
@@ -93,7 +122,5 @@ app.UseExceptionHandler(exceptionHandler =>
 });
 
 app.MapControllers();
-
-app.UseHttpsRedirection();
 
 app.Run();

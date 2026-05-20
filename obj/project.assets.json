@@ -3231,11 +3231,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "projectUniqueName": "C:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
       "projectName": "myfinance",
-      "projectPath": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
+      "projectPath": "C:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\myfinance.csproj",
       "packagesPath": "C:\\Users\\earau\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\obj\\",
+      "outputPath": "C:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3740,13 +3740,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file c:\\Users\\earau\\OneDrive\\Desktop\\Projetos\\myfinance\\obj\\project.nuget.cache : '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0."
-    }
-  ]
+  }
 }

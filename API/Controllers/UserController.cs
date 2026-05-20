@@ -14,6 +14,7 @@ namespace myfinance.API.Controllers
         private readonly ITokenService _tokenService = tokenService;
 
         [HttpGet("users")]
+        [Authorize]
         public async Task<IActionResult> GetUsers()
         {
             return Ok(await _userService.GetUsersAsync());
@@ -24,14 +25,23 @@ namespace myfinance.API.Controllers
         {
             string token = await _userService.LoginUserAsync(userData);
 
-            return Ok(new { token });
-        }
+            Response.Cookies.Append("access_token", token, 
+            new CookieOptions 
+            { 
+                HttpOnly = true, 
+                SameSite = SameSiteMode.Lax, 
+                Secure = false, 
+                Expires = DateTime.UtcNow.AddHours(2) 
+            });
+
+            return Ok();
+        } 
 
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterRequestDTO userData)
         {
             await _userService.RegisterUserAsync(userData);     
-                       
+                        
             return Ok();
         }
     }
